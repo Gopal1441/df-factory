@@ -1,0 +1,203 @@
+{
+	"name": "06_Moving_data_inside_pooldb",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_ko9",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "dbo.pool_logdata_parquet"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.logdata_parquet"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SqlDWSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"writeBehavior": "Insert"
+					},
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "datalake14411_service",
+							"type": "LinkedServiceReference"
+						}
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Correlationid",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Correlationid",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Operationname",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Operationname",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Status",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Status",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Eventcategory",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Eventcategory",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Level",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Level",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Time",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Time",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Subscription",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Subscription",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Eventinitiatedby",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Eventinitiatedby",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Resourcetype",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Resourcetype",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Resourcegroup",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Resourcegroup",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Resource",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Resource",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_ko9",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_ko9",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2024-06-06T17:08:15Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

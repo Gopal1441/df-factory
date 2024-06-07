@@ -1,0 +1,40 @@
+{
+	"name": "ServerLogsTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "synapseworkspace1441_pooldb_service",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "Remote_addr",
+				"type": "varchar"
+			},
+			{
+				"name": "Time_Local",
+				"type": "varchar"
+			},
+			{
+				"name": "Request",
+				"type": "varchar"
+			},
+			{
+				"name": "Status",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Bytes",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Serverlogs"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
